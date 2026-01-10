@@ -20,8 +20,8 @@ export const createTestinomial = async (req, res, next) => {
 
 export const getAllTestimonies = async (req, res) => {
   const testinomials = await testinomialModel
-    .find()
-    .populate("user", "email phone")
+    .find({ isDeleted: false })
+    .populate("user", "userName email phone")
     .sort({ createdAt: -1 });
 
   return res.status(200).json({

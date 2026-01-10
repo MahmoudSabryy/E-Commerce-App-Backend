@@ -14,19 +14,10 @@ export const adminGetAllproducts = async (req, res, next) => {
 };
 
 export const getAllproducts = async (req, res, next) => {
-  let products = res.paginatedResult.results;
-
-  products = products.filter(
-    (p) => p.isDeleted === false && p.isActivated === true
-  );
-
   return res.status(200).json({
     success: true,
     message: "Paginated Active Products",
-    data: {
-      ...res.paginatedResult,
-      results: products,
-    },
+    data: res.paginatedResult,
   });
 };
 
