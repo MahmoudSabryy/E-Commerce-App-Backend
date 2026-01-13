@@ -29,7 +29,9 @@ const bootstrap = async (app, express) => {
     "/uploads/images",
     express.static(path.join(__dirname, "../uploads/images"))
   );
-
+  app.get("/", (req, res) => {
+    res.send("Backend is running 🚀");
+  });
   app.use("/auth", authRouter);
   app.use("/user", userRouter);
   app.use("/product", productRouter);
